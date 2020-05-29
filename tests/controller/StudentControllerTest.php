@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class StudentControllerTest extends WebTestCase
 {
-    public function testGetAllStudents()
+    public function testGetStudents()
     {
         $client = static::createClient();
 
@@ -25,6 +25,7 @@ class StudentControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         //Verify if creation of student work and send code 201 and if json send by the api is the same then the ones sent
+        // this student will be used to make the test for the Creation, the update, adding score and check average code then delete
         $studentToCreate = '{"firstname":"Fabien" , "lastname" :"Pelous", "birthday" :"1979-10-22T00:00:00+01:00"}';
         //objet student equivalent to json send in the next request
         $studentToCreateInArray = json_decode($studentToCreate, true);
