@@ -1,10 +1,5 @@
 <?php
 
-//./bin/phpunit
-
-namespace App\Tests;
-
-
 namespace App\Tests\Controller;
 
 use App\Entity\Student;
@@ -89,7 +84,6 @@ class StudentControllerTest extends WebTestCase
         $studentObjectToUpdate->setLastname($studentToUpdateInArray['lastname']);
         $studentObjectToUpdate->setFirstname($studentToUpdateInArray['firstname']);
         $studentObjectToUpdate->setBirthday(new \DateTime($studentToUpdateInArray['birthday']));
-
 
         $studentObjectUpdated = new Student();
         $studentObjectUpdated->setId($idCreated);
