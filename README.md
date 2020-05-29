@@ -3,9 +3,9 @@
 Project Title : Student API
 
 Technical 
-  symfony V4.9
-  php v4.2
-  sqlite v2.2.17
+  -symfony V4.9
+  -php v4.2
+  -sqlite v2.2.17
 
 Install
 
