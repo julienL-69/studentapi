@@ -39,7 +39,6 @@ class Student
     /**
      * @ORM\Column(type="date")
      * @Groups({"students:read" , "student:score:read" })
-     * @Assert\Date
      * @var string A "Y-m-d" formatted value
      */
     private $birthday;

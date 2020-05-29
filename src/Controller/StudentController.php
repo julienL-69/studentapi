@@ -27,7 +27,6 @@ class StudentController extends AbstractController
     /**
      * @Route("/student", name="student_store" , methods={"POST"})
      */
-
     public function store(Request $request, SerializerInterface $serializer,
                           EntityManagerInterface $em, ValidatorInterface $validator)
     {
@@ -176,17 +175,9 @@ class StudentController extends AbstractController
         return $this->json($student, 200, [], ['groups' => 'student:score:read']);
     }
 
-
-    /**
-     * @Route("/student", name="student_store" , methods={"POST"})
-     */
-
-
-//    TODO ADD A SCORE TO A STUDENT BY THIS ID
     /**
      * @Route("/student/{id}/addscore", name="student_addscore" , methods={"POST"})
      */
-
     public function addScore($id, Request $request, SerializerInterface $serializer,
                           EntityManagerInterface $em, ValidatorInterface $validator,
                              StudentRepository $studentRepository)
@@ -194,7 +185,7 @@ class StudentController extends AbstractController
         $student = $studentRepository->findOneBy(['id' => $id]);
         $jsonPost = $request->getContent();
 
-// Verify if student exist
+        // Verify if student exist
         if ($student == null) {
             return $this->json([
                 'status' => 404,

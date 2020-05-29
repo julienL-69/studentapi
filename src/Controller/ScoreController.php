@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\ScoreRepository;
-use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
