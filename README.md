@@ -2,12 +2,24 @@
 
 Project Title : Student API
 
-Project details:
-Api to manage Student and their scores at School
-- create, edit, delete a student
-- retrieve all students or student by this id
-- retrieve the average score of all student
--retrieve the average score of a student by this id
+
+créer une API de notation d'élèves en Symfony
+Un élève est caractérisé par :
+•Un nom
+•Un prénom
+•Une date de naissance
+Une note est caractérisée par :
+•Une valeur : entre 0 et 20
+•Une matière : Champ texte
+L'API devra permettre de :
+•Ajouter un élève
+•Modifier les informations d'un élève (nom, prénom, date de naissance)
+•Supprimer un élève
+•Ajouter une note à un élève
+•Récupérer la moyenne de toutes les notes d'un élève
+•Récupérer la moyenne générale de la classe (moyenne de toutes les notes données)
+
+
 
 
 
