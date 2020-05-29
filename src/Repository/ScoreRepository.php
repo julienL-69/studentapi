@@ -36,15 +36,17 @@ class ScoreRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Score
+
+    public function findAverageScoreByStudent($value)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+            ->select('AVG(s.score) as average')
+            //->select('s.score')
+            ->andWhere('s.student = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+
 }

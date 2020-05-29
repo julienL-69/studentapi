@@ -18,14 +18,14 @@ class Score
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("scores:read")
+     * @Groups({"scores:read" ,"score:add:return"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Groups({"scores:read" , "student:score:read"})
+     * @Groups({"scores:read" , "student:score:read","score:add:return"})
      */
     private $subject;
 
@@ -35,7 +35,7 @@ class Score
      * @Assert\Range(
      *      min = 0,
      *      max = 20)
-     * @Groups({"scores:read" , "student:score:read"})
+     * @Groups({"scores:read" , "student:score:read","score:add:return"})
      */
     private $score;
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Score;
 use App\Entity\Student;
 use App\Repository\StudentRepository;
 use DateTime;
@@ -160,9 +161,6 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}/score", name="student_score_by_id", methods={"GET"})
-     * @param $id
-     * @param StudentRepository $studentRepository
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function studentScores($id, StudentRepository $studentRepository)
     {
@@ -178,5 +176,54 @@ class StudentController extends AbstractController
         return $this->json($student, 200, [], ['groups' => 'student:score:read']);
     }
 
+
+    /**
+     * @Route("/student", name="student_store" , methods={"POST"})
+     */
+
+
+//    TODO ADD A SCORE TO A STUDENT BY THIS ID
+    /**
+     * @Route("/student/{id}/addscore", name="student_addscore" , methods={"POST"})
+     */
+
+    public function addScore($id, Request $request, SerializerInterface $serializer,
+                          EntityManagerInterface $em, ValidatorInterface $validator,
+                             StudentRepository $studentRepository)
+    {
+        $student = $studentRepository->findOneBy(['id' => $id]);
+        $jsonPost = $request->getContent();
+
+// Verify if student exist
+        if ($student == null) {
+            return $this->json([
+                'status' => 404,
+                'message' => 'student not found'
+            ], 404);
+        }
+
+        // creation Score object with json post
+        try {
+            $score = $serializer->deserialize($jsonPost, Score::class, 'json');
+            // add student to score object
+            $score->setStudent($student);
+
+            $errors = $validator->validate($score);
+
+            if (count($errors) > 0) {
+                return $this->json($errors, 400);
+            }
+
+            $em->persist($score);
+            $em->flush();
+        } catch (NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ], 400);
+        }
+
+        return $this->json($score, 201, [], ['groups' => 'score:add:return']);
+    }
 
 }

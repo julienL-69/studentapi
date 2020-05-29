@@ -23,5 +23,14 @@ class ScoreController extends AbstractController
     }
 
 
+    /**
+     * @Route("/{id}", name="_by_student", methods={"GET"})
+     */
+    public function allScoresByStudent($id ,ScoreRepository $scoreRepository)
+    {
+        return $this->json($scoreRepository->findAverageScoreByStudent($id), 200, [], ['groups' => 'student:score:read']);
+    }
+
+
 
 }
