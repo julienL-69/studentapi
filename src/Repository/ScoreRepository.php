@@ -35,13 +35,21 @@ class ScoreRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAverageScore()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('count(s.score) as countScore ,AVG(s.score) as average')
+            //->select('s.score')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 
     public function findAverageScoreByStudent($value)
     {
         return $this->createQueryBuilder('s')
-            ->select('AVG(s.score) as average')
-            //->select('s.score')
+            ->select('count(s.score) as countScore , AVG(s.score) as average')
             ->andWhere('s.student = :val')
             ->setParameter('val', $value)
             ->getQuery()

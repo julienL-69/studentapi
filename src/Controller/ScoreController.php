@@ -22,13 +22,21 @@ class ScoreController extends AbstractController
         return $this->json($scoreRepository->findAll(), 200, [], ['groups' => 'student:score:read']);
     }
 
+    /**
+     * @Route("/average", name="_average_all_students", methods={"GET"})
+     */
+    public function findAverageScore(ScoreRepository $scoreRepository)
+    {
+        return $this->json($scoreRepository->findAverageScore(), 200, []);
+    }
+
 
     /**
-     * @Route("/{id}", name="_by_student", methods={"GET"})
+     * @Route("/average/{id}", name="_average_by_student_id", methods={"GET"})
      */
-    public function allScoresByStudent($id ,ScoreRepository $scoreRepository)
+    public function averageScoreByStudent($id ,ScoreRepository $scoreRepository)
     {
-        return $this->json($scoreRepository->findAverageScoreByStudent($id), 200, [], ['groups' => 'student:score:read']);
+        return $this->json($scoreRepository->findAverageScoreByStudent($id), 200, []);
     }
 
 
