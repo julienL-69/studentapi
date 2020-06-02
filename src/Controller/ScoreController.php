@@ -9,13 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/score", name="score_")
  */
-
-
 class ScoreController extends AbstractController
 {
     /**
      * @Route("", name="all", methods={"GET"})
-     * this method is use to obtain all the scores of all student
+     * this method is used to obtain all the scores of all student
      */
     public function allScores(ScoreRepository $scoreRepository)
     {
@@ -24,7 +22,7 @@ class ScoreController extends AbstractController
 
     /**
      * @Route("/average", name="_average_all_students", methods={"GET"})
-     * this method is use to obtain the average score of all student's score & number of score registered
+     * this method is used to obtain the average score of all student's score & number of score registered
      */
     public function findAverageScore(ScoreRepository $scoreRepository)
     {
@@ -34,7 +32,7 @@ class ScoreController extends AbstractController
 
     /**
      * @Route("/average/{id}", name="_average_by_student_id", methods={"GET"})
-     * this method is use to obtain the average score of a student (by id) and the number of score registered for this student
+     * this method is used to obtain the average score of a student (by id) and the number of score registered for this student
      */
     public function averageScoreByStudent($id ,ScoreRepository $scoreRepository)
     {

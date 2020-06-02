@@ -14,10 +14,13 @@ use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @Route("/student", name="student_")
+ */
 class StudentController extends AbstractController
 {
     /**
-     * @Route("/student", name="student_all", methods={"GET"})
+     * @Route("", name="all", methods={"GET"})
      * this method is used to obtain a json of all the students
      */
     public function allStudents(StudentRepository $studentRepository)
@@ -26,7 +29,7 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/student", name="student_store" , methods={"POST"})
+     * @Route("", name="store" , methods={"POST"})
      * this method is used to create a new student in database
      */
     public function store(Request $request, SerializerInterface $serializer,
@@ -56,8 +59,8 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/student/{id}", name="student_by_id", methods={"GET"})
-     * this method is use to obtain the information about a student by this id
+     * @Route("/{id}", name="by_id", methods={"GET"})
+     * this method is used to obtain the information about a student by this id
      */
     public function student($id, StudentRepository $studentRepository)
     {
@@ -74,8 +77,8 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/student/{id}", name="student_delete_by_id", methods={"DELETE"})
-     * this method is use to delete a student (by this id)
+     * @Route("/{id}", name="delete_by_id", methods={"DELETE"})
+     * this method is used to delete a student (by this id)
      */
     public function studentDelete($id, StudentRepository $studentRepository, EntityManagerInterface $em)
     {
@@ -106,8 +109,8 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/student/{id}", name="update_student_by_id", methods={"PUT"})
-     * this method is use to update the information of one student ( by id)
+     * @Route("/{id}", name="update_by_id", methods={"PUT"})
+     * this method is used to update the information of one student ( by id)
      */
     public function studentUpdate($id, Request $request, StudentRepository $studentRepository,
                                   SerializerInterface $serializer, EntityManagerInterface $em,
@@ -164,8 +167,8 @@ class StudentController extends AbstractController
 
 
     /**
-     * @Route("/student/{id}/score", name="student_score_by_id", methods={"GET"})
-     * this method is use to obtain all the scores of a student and infomration about the student (by id)
+     * @Route("/{id}/score", name="_score_by_id", methods={"GET"})
+     * this method is used to obtain all the scores of a student and information about the student (by id)
      */
     public function studentScores($id, StudentRepository $studentRepository)
     {
@@ -182,8 +185,8 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/student/{id}/addscore", name="student_addscore" , methods={"POST"})
-     * this method is use to add score ( subject and score) for a student ( by id)
+     * @Route("/{id}/addscore", name="addscore" , methods={"POST"})
+     * this method is used to add score ( subject and score) for a student ( by id)
      */
     public function addScore($id, Request $request, SerializerInterface $serializer,
                           EntityManagerInterface $em, ValidatorInterface $validator,
