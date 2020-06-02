@@ -34,7 +34,7 @@ Scores
 - retrieve the average score in all subject for a student (by this id)
 - retrieve the average in all subject for all students
 
-PLEASE READ APi MANUEL FOR MORE INFORMATIONS ON "HOW TO USE THESE STUDENT &SCORE& API
+PLEASE READ API MANUEL "API MANUEL.odt"  FOR MORE INFORMATIONS ON "HOW TO USE THESE STUDENT & SCORES  API"
 
 
 
