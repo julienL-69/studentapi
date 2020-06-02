@@ -18,6 +18,7 @@ class StudentController extends AbstractController
 {
     /**
      * @Route("/student", name="student_all", methods={"GET"})
+     * this method is used to obtain a json of all the students
      */
     public function allStudents(StudentRepository $studentRepository)
     {
@@ -26,6 +27,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student", name="student_store" , methods={"POST"})
+     * this method is used to create a new student in database
      */
     public function store(Request $request, SerializerInterface $serializer,
                           EntityManagerInterface $em, ValidatorInterface $validator)
@@ -55,6 +57,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}", name="student_by_id", methods={"GET"})
+     * this method is use to obtain the information about a student by this id
      */
     public function student($id, StudentRepository $studentRepository)
     {
@@ -72,6 +75,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}", name="student_delete_by_id", methods={"DELETE"})
+     * this method is use to delete a student (by this id)
      */
     public function studentDelete($id, StudentRepository $studentRepository, EntityManagerInterface $em)
     {
@@ -103,6 +107,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}", name="update_student_by_id", methods={"PUT"})
+     * this method is use to update the information of one student ( by id)
      */
     public function studentUpdate($id, Request $request, StudentRepository $studentRepository,
                                   SerializerInterface $serializer, EntityManagerInterface $em,
@@ -160,6 +165,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}/score", name="student_score_by_id", methods={"GET"})
+     * this method is use to obtain all the scores of a student and infomration about the student (by id)
      */
     public function studentScores($id, StudentRepository $studentRepository)
     {
@@ -177,6 +183,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/student/{id}/addscore", name="student_addscore" , methods={"POST"})
+     * this method is use to add score ( subject and score) for a student ( by id)
      */
     public function addScore($id, Request $request, SerializerInterface $serializer,
                           EntityManagerInterface $em, ValidatorInterface $validator,
